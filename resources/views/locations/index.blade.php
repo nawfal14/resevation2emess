@@ -1,20 +1,20 @@
-@extends('layouts.app')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Liste des lieux') }}
+        </h2>
+    </x-slot>
 
-@section('title', 'Artiste')
-
-@section('content')
-
-<div class="container">
-    <h1>Liste des lieux</h1>
-    <ul class="list-group">
-        @foreach ($locations as $location)
-            <li class="list-group-item">
-                <a href="{{ route('locations.show', $location->id) }}">
-                    {{ $location->designation }} - {{ $location->locality->locality }}
-                </a>
-            </li>
-        @endforeach
-    </ul>
-</div>
-
-@endsection
+    <div class="container mt-5">
+        <h1>Liste des lieux</h1>
+        <ul class="list-group">
+            @foreach ($locations as $location)
+                <li class="list-group-item">
+                    <a href="{{ route('locations.show', $location->id) }}">
+                        {{ $location->designation }} - {{ $location->locality->locality }}
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+    </div>
+</x-app-layout>

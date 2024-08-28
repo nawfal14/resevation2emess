@@ -1,52 +1,57 @@
-@extends('layouts.app')
-
-@section('title', 'Artiste')
-
-@section('content')
-
-<div class="container">
-
-    <h1>Inscription</h1>
+<x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
+
+        <!-- First Name -->
         <div>
-            <label for="register_email">Email</label>
-            <input type="email" id="register_email" name="email" value="{{ old('email') }}" required>
+            <x-input-label for="firstname" :value="__('First Name')" />
+            <x-text-input id="firstname" class="block mt-1 w-full" type="text" name="firstname" :value="old('firstname')" required autofocus autocomplete="given-name" />
+            <x-input-error :messages="$errors->get('firstname')" class="mt-2" />
         </div>
-        <div>
-            <label for="register_login">Login</label>
-            <input type="text" id="register_login" name="login" value="{{ old('login') }}" required>
+
+        <!-- Last Name -->
+        <div class="mt-4">
+            <x-input-label for="lastname" :value="__('Last Name')" />
+            <x-text-input id="lastname" class="block mt-1 w-full" type="text" name="lastname" :value="old('lastname')" required autocomplete="family-name" />
+            <x-input-error :messages="$errors->get('lastname')" class="mt-2" />
         </div>
-        <div>
-            <label for="register_firstname">Prénom</label>
-            <input type="text" id="register_firstname" name="firstname" value="{{ old('firstname') }}" required>
+
+        <!-- Login -->
+        <div class="mt-4">
+            <x-input-label for="login" :value="__('Login')" />
+            <x-text-input id="login" class="block mt-1 w-full" type="text" name="login" :value="old('login')" required autocomplete="username" />
+            <x-input-error :messages="$errors->get('login')" class="mt-2" />
         </div>
-        <div>
-            <label for="register_lastname">Nom</label>
-            <input type="text" id="register_lastname" name="lastname" value="{{ old('lastname') }}" required>
+
+        <!-- Email Address -->
+        <div class="mt-4">
+            <x-input-label for="email" :value="__('Email')" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
-        <div>
-            <label for="register_password">Mot de passe</label>
-            <input type="password" id="register_password" name="password" required>
+
+        <!-- Password -->
+        <div class="mt-4">
+            <x-input-label for="password" :value="__('Password')" />
+            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
-        <div>
-            <label for="register_password_confirmation">Confirmer le mot de passe</label>
-            <input type="password" id="register_password_confirmation" name="password_confirmation" required>
+
+        <!-- Confirm Password -->
+        <div class="mt-4">
+            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+            <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
-        @if ($errors->any())
-            <div>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        <div>
-            <button type="submit">Inscription</button>
+
+        <div class="flex items-center justify-end mt-4">
+            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
+                {{ __('Already registered?') }}
+            </a>
+
+            <x-primary-button class="ms-4">
+                {{ __('Register') }}
+            </x-primary-button>
         </div>
     </form>
-
-</div>
-
-@endsection
+</x-guest-layout>
