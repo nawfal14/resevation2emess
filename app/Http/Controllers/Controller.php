@@ -6,7 +6,6 @@ use App\Models\User;
 
 class Controller extends BaseController
 {
-    //
 
     public function showUsers()
     {

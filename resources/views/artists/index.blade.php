@@ -1,18 +1,18 @@
-@extends('layouts.app')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Liste des artistes') }}
+        </h2>
+    </x-slot>
 
-@section('title', 'Liste des artistes')
-
-@section('content')
-
-<div class="container">
-    <h1>Liste des artistes</h1>
-    <div class="list-group">
-        @foreach ($artists as $artist)
-            <a href="{{ route('artists.show', $artist->id) }}" class="list-group-item list-group-item-action">
-                {{ $artist->firstname }} {{ $artist->lastname }}
-            </a>
-        @endforeach
+    <div class="container mt-5">
+        <h1>Liste des artistes</h1>
+        <div class="list-group">
+            @foreach ($artists as $artist)
+                <a href="{{ route('artists.show', $artist->id) }}" class="list-group-item list-group-item-action">
+                    {{ $artist->firstname }} {{ $artist->lastname }}
+                </a>
+            @endforeach
+        </div>
     </div>
-</div>
-
-@endsection
+</x-app-layout>
