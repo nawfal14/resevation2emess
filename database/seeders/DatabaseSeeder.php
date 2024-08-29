@@ -1,7 +1,6 @@
 <?php
 
 namespace Database\Seeders;
-
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -9,8 +8,9 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
+            ArtistSeeder::class,
+            LocalitySeeder::class,
             UserSeeder::class,
-            ArtistSeeder::class
         ]);
     }
 }

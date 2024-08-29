@@ -9,6 +9,8 @@ class Locality extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $table = 'localities';
 
     protected $fillable = ['postal_code', 'locality'];
