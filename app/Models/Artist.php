@@ -9,6 +9,8 @@ class Artist extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'firstname',
         'lastname'
