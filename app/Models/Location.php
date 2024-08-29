@@ -9,8 +9,12 @@ class Location extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
+    protected $table = 'locations';
+
     protected $fillable = [
-        'slug', 'designation', 'address', 'locality_id'
+        'slug', 'designation', 'address', 'locality_id', 'website', 'phone'
     ];
 
     public function locality()
