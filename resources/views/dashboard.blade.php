@@ -15,11 +15,32 @@
                     </div>
                 </div>
 
-                <!-- Card: Number of Users -->
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-4">
-                    <div class="p-6 text-gray-900">
-                        <h3 class="text-xl font-bold">Total Users</h3>
-                        <p>{{ $users_count }}</p>
+                <!-- Row: Users -->
+                <div style="display: flex; flex-direction: row; gap: 10px; margin-bottom: 10px">
+                    <!-- Card: Number of Users -->
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-1/3">
+                        <div class="p-6 text-gray-900">
+                            <h3 class="text-xl font-bold">Total Users</h3>
+                            <p>{{ $users_count }}</p>
+                        </div>
+                    </div>
+
+                    <!-- Card: Add New User -->
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-1/3">
+                        <div class="p-6 text-gray-900">
+                            <h3 class="text-xl font-bold">Add New User</h3>
+                            <a href="{{ route('admin.users.create') }}" class="text-blue-500">Add User</a>
+                        </div>
+                    </div>
+
+                    <!-- Card: Export Users -->
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-1/3">
+                        <div class="p-6 text-gray-900">
+                            <h3 class="text-xl font-bold">Export Users</h3>
+                            <a href="{{ route('admin.users.export', 'csv') }}" class="text-blue-500">Export CSV</a>
+                            <br>
+                            <a href="{{ route('admin.users.export', 'pdf') }}" class="text-blue-500">Export PDF</a>
+                        </div>
                     </div>
                 </div>
 
@@ -56,11 +77,32 @@
                     </div>
                 </div>
 
-                <!-- Card: Number of Users -->
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-4">
-                    <div class="p-6 text-gray-900">
-                        <h3 class="text-xl font-bold">Total Shows</h3>
-                        <p>{{ $shows_count }}</p>
+                <!-- Row: Shows -->
+                 <div style="display: flex; flex-direction: row; gap: 10px; margin-bottom: 10px">
+                    <!-- Card: Number of Shows -->
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-1/3">
+                        <div class="p-6 text-gray-900">
+                            <h3 class="text-xl font-bold">Total Shows</h3>
+                            <p>{{ $shows_count }}</p>
+                        </div>
+                    </div>
+
+                    <!-- Card: Add New Show -->
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-1/3">
+                        <div class="p-6 text-gray-900">
+                            <h3 class="text-xl font-bold">Add New Show</h3>
+                            <a href="{{ route('admin.shows.create') }}" class="text-blue-500">Add Show</a>
+                        </div>
+                    </div>
+
+                    <!-- Card: Export Shows -->
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-1/3">
+                        <div class="p-6 text-gray-900">
+                            <h3 class="text-xl font-bold">Export Shows</h3>
+                            <a href="{{ route('admin.shows.export', 'csv') }}" class="text-blue-500">Export CSV</a>
+                            <br>
+                            <a href="{{ route('admin.shows.export', 'pdf') }}" class="text-blue-500">Export PDF</a>
+                        </div>
                     </div>
                 </div>
 
@@ -92,19 +134,37 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <a href="{{ route('admin.shows.create') }}" class="text-blue-500 mt-2 inline-block">Add New Show</a>
                     </div>
                 </div>
 
+                <!-- Row: Artists -->
+                 <div style="display: flex; flex-direction: row; gap: 10px; margin-bottom: 10px">
+                    <!-- Card: Number of Artists -->
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-1/3">
+                        <div class="p-6 text-gray-900">
+                            <h3 class="text-xl font-bold">Total Artists</h3>
+                            <p>{{ $artists_count }}</p>
+                        </div>
+                    </div>
 
-                <!-- Card: Number of Users -->
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-4">
-                    <div class="p-6 text-gray-900">
-                        <h3 class="text-xl font-bold">Total Artists</h3>
-                        <p>{{ $artists_count }}</p>
+                    <!-- Card: Add New Artist -->
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-1/3">
+                        <div class="p-6 text-gray-900">
+                            <h3 class="text-xl font-bold">Add New Artist</h3>
+                            <a href="{{ route('admin.artists.create') }}" class="text-blue-500">Add Artist</a>
+                        </div>
+                    </div>
+
+                    <!-- Card: Export Artists -->
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-1/3">
+                        <div class="p-6 text-gray-900">
+                            <h3 class="text-xl font-bold">Export Artists</h3>
+                            <a href="{{ route('admin.artists.export', 'csv') }}" class="text-blue-500">Export CSV</a>
+                            <br>
+                            <a href="{{ route('admin.artists.export', 'pdf') }}" class="text-blue-500">Export PDF</a>
+                        </div>
                     </div>
                 </div>
-
 
                 <!-- Card: Manage Artists -->
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-4">
@@ -134,16 +194,13 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <a href="{{ route('admin.artists.create') }}" class="text-blue-500 mt-2 inline-block">Add New
-                            Artist</a>
                     </div>
                 </div>
 
             @else
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
-                        <h3 class="text-xl font-bold">Welcome, {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}!
-                        </h3>
+                        <h3 class="text-xl font-bold">Welcome, {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}!</h3>
                         <p>We're glad to see you back!</p>
                     </div>
                 </div>

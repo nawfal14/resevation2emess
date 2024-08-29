@@ -49,4 +49,9 @@ class ShowController extends Controller
 
         return redirect()->route('admin.shows.index')->with('success', 'Show deleted successfully.');
     }
+
+    public function export($format)
+    {
+        // Logic to export data as CSV or PDF
+    }
 }

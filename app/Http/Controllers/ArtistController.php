@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Artist;
-use Illuminate\Http\Request;
 
 class ArtistController extends Controller
 {
@@ -19,5 +18,10 @@ class ArtistController extends Controller
     {
         $artist = Artist::with('shows')->findOrFail($id);
         return view('artists.show', compact('artist'));
+    }
+
+    public function export($format)
+    {
+        // Logic to export data as CSV or PDF
     }
 }

@@ -67,4 +67,9 @@ class UserController extends Controller
     {
         //
     }
+
+    public function export($format)
+    {
+        // Logic to export data as CSV or PDF
+    }
 }
