@@ -15,7 +15,6 @@
         </div>
         <div class="row" style="width: 100%; display: flex; flex-direction: row; gap: 10px;">
             @foreach ($shows as $show)
-
                 <div class="card" style="width: 280px; height: 480px;">
                     <div style="width: 100%; height: 70%; overflow: hidden;">
                         <img src="{{ asset('images' . $show->poster_url) }}" alt="{{ $show->title }}"

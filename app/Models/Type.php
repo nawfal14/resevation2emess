@@ -9,7 +9,7 @@ class Type extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['type'];
+    protected $fillable = ['name'];
 
     public function artists()
     {

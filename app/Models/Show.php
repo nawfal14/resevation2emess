@@ -9,15 +9,18 @@ class Show extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
+    protected $table = 'shows';
+
     protected $fillable = [
-        'id',
         'slug',
         'title',
         'poster_url',
         'duration',
-        'description',
-        'date',
-        'location_id'
+        'created_in',
+        'location_id',
+        'bookable'
     ];
 
     public function types()

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Representation;
-use Illuminate\Http\Request;
 
 class RepresentationController extends Controller
 {
