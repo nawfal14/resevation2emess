@@ -28,7 +28,7 @@ class ReservationController extends Controller
     public function create($show_id)
     {
         $show = Show::with('representations')->findOrFail($show_id);
-        $prices = Price::all();
+        $prices = Price::where('show_id', $show_id)->get();
         $users = User::all();
         return view('reservations.create', compact('show', 'users', 'prices'));
     }
