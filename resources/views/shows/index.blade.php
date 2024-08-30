@@ -17,7 +17,7 @@
             @foreach ($shows as $show)
                 <div class="card" style="width: 280px; height: 480px;">
                     <div style="width: 100%; height: 70%; overflow: hidden;">
-                        <img src="{{ asset('images' . $show->poster_url) }}" alt="{{ $show->title }}"
+                        <img src="{{$show->poster_url}}" alt="{{ $show->title }}"
                             style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="card-body"

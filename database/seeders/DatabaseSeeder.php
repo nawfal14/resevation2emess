@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
             ShowSeeder::class,
 
             // 3
+            ArtisteTypeShowSeeder::class,
             RepresentationSeeder::class,
-
         ]);
     }
 }

@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Database\Seeder;
+namespace Database\Seeders;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Seeder;
 use App\Models\Artist;
 use App\Models\Type;
 use App\Models\Show;
