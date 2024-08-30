@@ -8,11 +8,19 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            ArtistSeeder::class,
+            // 1 
+            TypeSeeder::class,
             LocalitySeeder::class,
-            LocationSeeder::class,
             UserSeeder::class,
+
+            // 2
+            ArtistSeeder::class,
+            LocationSeeder::class,
             ShowSeeder::class,
+
+            // 3
+            RepresentationSeeder::class,
+
         ]);
     }
 }
