@@ -15,7 +15,6 @@ return new class extends Migration {
             $table->dateTime('booking_date');
             $table->string('status');
             $table->integer('quantity');
-            $table->timestamps();
         });
     }
 

@@ -11,7 +11,6 @@ return new class extends Migration {
             $table->id();
             $table->string('postal_code', 10);
             $table->string('locality');
-            $table->timestamps();
         });
     }
 

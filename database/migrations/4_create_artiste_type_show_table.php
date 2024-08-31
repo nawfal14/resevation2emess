@@ -12,7 +12,6 @@ return new class extends Migration {
             $table->foreignId('show_id')->constrained()->onDelete('cascade');
             $table->foreignId('type_id')->constrained()->onDelete('cascade');
             $table->foreignId('artist_id')->constrained()->onDelete('cascade');
-            $table->timestamps();
         });
     }
 

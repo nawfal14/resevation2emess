@@ -15,7 +15,6 @@ return new class extends Migration {
             $table->foreignId('locality_id')->constrained()->onDelete('cascade');
             $table->string('website')->nullable();
             $table->string('phone', 20)->nullable();
-            $table->timestamps();
         });
     }
 

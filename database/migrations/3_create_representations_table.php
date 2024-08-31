@@ -12,7 +12,6 @@ return new class extends Migration {
             $table->foreignId('show_id')->constrained()->onDelete('cascade');
             $table->foreignId('location_id')->constrained()->onDelete('cascade');
             $table->dateTime('schedule');
-            $table->timestamps();
         });
     }
 
