@@ -15,4 +15,7 @@
             @endforeach
         </div>
     </div>
+    <div class="mt-4">
+        {{ $artists->links() }}
+    </div>
 </x-app-layout>

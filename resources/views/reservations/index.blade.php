@@ -25,7 +25,8 @@
                 @foreach ($reservations as $reservation)
                     <tr>
                         <td>{{ $reservation->user->firstname ?? 'Utilisateur inconnu' }}
-                            {{ $reservation->user->lastname ?? '' }}</td>
+                            {{ $reservation->user->lastname ?? '' }}
+                        </td>
                         <td>{{ $reservation->representation->show->title ?? 'Spectacle inconnu' }}</td>
                         <td>{{ $reservation->representation->schedule ?? 'Date inconnue' }}</td>
                         <td>{{ $reservation->booking_date }}</td>
@@ -38,5 +39,8 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="mt-4">
+            {{ $reservations->links() }}
+        </div>
     </div>
 </x-app-layout>

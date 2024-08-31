@@ -10,7 +10,8 @@ class ShowController extends Controller
 
     public function index()
     {
-        $shows = Show::all();
+        // $shows = Show::all();
+        $shows = Show::paginate(5);
         return view('shows.index', compact('shows'));
     }
 

@@ -11,9 +11,15 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-        $users = User::all();
-        $shows = Show::all();
-        $artists = Artist::all();
+        // sans pagination
+        // $users = User::all();
+        // $shows = Show::all();
+        // $artists = Artist::all();
+
+        // avec pagination
+        $users = User::paginate(5);
+        $shows = Show::paginate(5);
+        $artists = Artist::paginate(5);
 
         return view('admin.dashboard', [
             'users' => $users,

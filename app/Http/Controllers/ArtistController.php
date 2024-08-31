@@ -8,7 +8,7 @@ class ArtistController extends Controller
 {
     public function index()
     {
-        $artists = Artist::all();
+        $artists = Artist::paginate(8);
         return view('artists.index', compact('artists'));
     }
 

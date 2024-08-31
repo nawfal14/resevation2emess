@@ -15,9 +15,7 @@
                     </div>
                 </div>
 
-                <!-- Row: Users -->
                 <div style="display: flex; flex-direction: row; gap: 10px; margin-bottom: 10px">
-                    <!-- Card: Number of Users -->
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-1/3">
                         <div class="p-6 text-gray-900">
                             <h3 class="text-xl font-bold">Total Users</h3>
@@ -25,7 +23,6 @@
                         </div>
                     </div>
 
-                    <!-- Card: Add New User -->
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-1/3">
                         <div class="p-6 text-gray-900">
                             <h3 class="text-xl font-bold">Add New User</h3>
@@ -33,7 +30,6 @@
                         </div>
                     </div>
 
-                    <!-- Card: Export Users -->
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-1/3">
                         <div class="p-6 text-gray-900">
                             <h3 class="text-xl font-bold">Export Users</h3>
@@ -44,7 +40,6 @@
                     </div>
                 </div>
 
-                <!-- Card: Manage Users -->
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-4">
                     <div class="p-6 text-gray-900">
                         <h3 class="text-xl font-bold">Manage Users</h3>
@@ -76,12 +71,14 @@
                                 @endforeach
                             </tbody>
                         </table>
+
+                        <div class="mt-4">
+                            {{ $users->links() }}
+                        </div>
                     </div>
                 </div>
 
-                <!-- Row: Shows -->
                 <div style="display: flex; flex-direction: row; gap: 10px; margin-bottom: 10px">
-                    <!-- Card: Number of Shows -->
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-1/3">
                         <div class="p-6 text-gray-900">
                             <h3 class="text-xl font-bold">Total Shows</h3>
@@ -89,15 +86,13 @@
                         </div>
                     </div>
 
-                    <!-- Card: Add New Show -->
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-1/3">
-                        <div class="p-6 text-gray-900">
-                            <h3 class="text-xl font-bold">Add New Show</h3>
-                            <a href="{{ route('admin.shows.create') }}" class="text-blue-500">Add Show</a>
-                        </div>
-                    </div>
+                    <!-- <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-1/3">
+                                    <div class="p-6 text-gray-900">
+                                        <h3 class="text-xl font-bold">Add New Show</h3>
+                                        <a href="{{ route('admin.shows.create') }}" class="text-blue-500">Add Show</a>
+                                    </div>
+                                </div> -->
 
-                    <!-- Card: Export Shows -->
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-1/3">
                         <div class="p-6 text-gray-900">
                             <h3 class="text-xl font-bold">Export Shows</h3>
@@ -108,7 +103,6 @@
                     </div>
                 </div>
 
-                <!-- Card: Manage Shows -->
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-4">
                     <div class="p-6 text-gray-900">
                         <h3 class="text-xl font-bold">Manage Shows</h3>
@@ -136,12 +130,13 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="mt-4">
+                            {{ $shows->links() }}
+                        </div>
                     </div>
                 </div>
 
-                <!-- Row: Artists -->
                 <div style="display: flex; flex-direction: row; gap: 10px; margin-bottom: 10px">
-                    <!-- Card: Number of Artists -->
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-1/3">
                         <div class="p-6 text-gray-900">
                             <h3 class="text-xl font-bold">Total Artists</h3>
@@ -149,15 +144,13 @@
                         </div>
                     </div>
 
-                    <!-- Card: Add New Artist -->
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-1/3">
-                        <div class="p-6 text-gray-900">
-                            <h3 class="text-xl font-bold">Add New Artist</h3>
-                            <a href="{{ route('admin.artists.create') }}" class="text-blue-500">Add Artist</a>
-                        </div>
-                    </div>
+                    <!-- <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-1/3">
+                                    <div class="p-6 text-gray-900">
+                                        <h3 class="text-xl font-bold">Add New Artist</h3>
+                                        <a href="{{ route('admin.artists.create') }}" class="text-blue-500">Add Artist</a>
+                                    </div>
+                                </div> -->
 
-                    <!-- Card: Export Artists -->
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-1/3">
                         <div class="p-6 text-gray-900">
                             <h3 class="text-xl font-bold">Export Artists</h3>
@@ -168,7 +161,6 @@
                     </div>
                 </div>
 
-                <!-- Card: Manage Artists -->
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-4">
                     <div class="p-6 text-gray-900">
                         <h3 class="text-xl font-bold">Manage Artists</h3>
@@ -196,6 +188,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="mt-4">
+                            {{ $artists->links() }}
+                        </div>
                     </div>
                 </div>
 

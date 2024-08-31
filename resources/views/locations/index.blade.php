@@ -17,4 +17,7 @@
             @endforeach
         </ul>
     </div>
+    <div class="mt-4">
+        {{ $locations->links() }}
+    </div>
 </x-app-layout>

@@ -28,5 +28,10 @@
                 @endforeach
             </tbody>
         </table>
+
+        <div class="mt-4">
+            {{ $representations->links() }}
+        </div>
+
     </div>
 </x-app-layout>

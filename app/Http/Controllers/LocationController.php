@@ -8,7 +8,7 @@ class LocationController extends Controller
 {
     public function index()
     {
-        $locations = Location::with('locality')->get();
+        $locations = Location::with('locality')->paginate(8);
         return view('locations.index', compact('locations'));
     }
 

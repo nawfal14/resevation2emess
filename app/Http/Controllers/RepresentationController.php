@@ -8,7 +8,7 @@ class RepresentationController extends Controller
 {
     public function index()
     {
-        $representations = Representation::with(['show', 'location'])->get();
+        $representations = Representation::with(['show', 'location'])->paginate(8);
         return view('representations.index', compact('representations'));
     }
 

@@ -29,5 +29,10 @@
 
             @endforeach
         </div>
+
+        <div class="mt-4">
+            {{ $shows->links() }}
+        </div>
+
     </div>
 </x-app-layout>

@@ -15,7 +15,7 @@ class ReservationController extends Controller
 {
     public function index()
     {
-        $reservations = Reservation::with(['user', 'representation.show'])->get();
+        $reservations = Reservation::with(['user', 'representation.show'])->paginate(8);
         return view('reservations.index', compact('reservations'));
     }
 
