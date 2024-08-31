@@ -9,6 +9,8 @@ class Representation extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+    
     protected $fillable = [
         'show_id',
         'schedule',
