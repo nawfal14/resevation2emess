@@ -6,7 +6,6 @@
     </x-slot>
 
     <div class="container mt-5">
-        <h1>{{ $show->title }} </h1>
         <div class="card">
             <div class="card-body">
                 <h2 class="card-title">Info</h2>

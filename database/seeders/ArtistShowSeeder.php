@@ -10,14 +10,12 @@ class ArtistShowSeeder extends Seeder
 {
     public function run(): void
     {
-
         $artists = Artist::all();
         $shows = Show::all();
 
-        $artists->each(function ($artist) use ($shows) {
-            $artist->shows()->attach(
-                $shows->random(rand(1, 3))->pluck('id')->toArray()
-            );
-        });
+        foreach ($shows as $show) {
+            $assignedArtists = $artists->random(rand(1, min(3, $artists->count())));
+            $show->artists()->attach($assignedArtists->pluck('id')->toArray());
+        }
     }
 }
