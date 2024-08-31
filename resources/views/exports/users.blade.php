@@ -31,7 +31,7 @@
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th>Email</th>
-                <th>Admin</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
@@ -40,7 +40,7 @@
                     <td>{{ $user->firstname ?? ""}}</td>
                     <td>{{ $user->lastname ?? ""}}</td>
                     <td>{{ $user->email ?? ""}}</td>
-                    <td>{{ $user->is_admin ? 'Yes' : 'No' }}</td>
+                    <td>{{ $user->is_admin ? 'Admin' : 'User' }}</td>
                 </tr>
             @endforeach
         </tbody>

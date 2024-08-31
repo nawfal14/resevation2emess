@@ -53,6 +53,7 @@
                                 <tr>
                                     <th class="px-5 py-2">Name</th>
                                     <th class="px-5 py-2">Email</th>
+                                    <th class="px-2 py-2">Admin</th>
                                     <th class="px-2 py-2">Actions</th>
                                 </tr>
                             </thead>
@@ -61,6 +62,7 @@
                                     <tr>
                                         <td class="border px-5 py-2">{{ $user->firstname }} {{ $user->lastname }}</td>
                                         <td class="border px-5 py-2">{{ $user->email }}</td>
+                                        <td class="border px-5 py-2">{{ $user->is_admin ? 'Admin' : 'User' }}</td>
                                         <td class="border px-2 py-2 flex">
                                             <a href="{{ route('admin.users.edit', $user->id) }}"
                                                 class="text-blue-500 mr-2">Edit</a>

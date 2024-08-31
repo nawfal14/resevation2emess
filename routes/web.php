@@ -9,7 +9,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RepresentationController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ShowController;
-use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -54,21 +53,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
-    Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
-    Route::post('/users/create', [UserController::class, 'destroy'])->name('admin.users.create');
-    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('admin.users.destroy');
-    Route::get('/users/export/{format}', [UserController::class, 'export'])->name('admin.users.export');
-
+    Route::get('/admin/users/{id}/edit', [AdminController::class, 'editUser'])->name('admin.users.edit');
+    Route::post('/admin/users/create', [AdminController::class, 'createUser'])->name('admin.users.create');
+    Route::patch('/admin/users/{id}', [AdminController::class, 'updateUser'])->name('admin.users.update');
+    Route::delete('/admin/users/{id}', [AdminController::class, 'destroyUser'])->name('admin.users.destroy');
 
     Route::get('/shows/{id}/edit', [ShowController::class, 'edit'])->name('admin.shows.edit');
     Route::delete('/shows/{id}', [ShowController::class, 'destroy'])->name('admin.shows.destroy');
     Route::get('/shows/create', [ShowController::class, 'create'])->name('admin.shows.create');
-    Route::get('/shows/export/{format}', [ShowController::class, 'export'])->name('admin.shows.export');
 
     Route::get('/artists/{id}/edit', [ArtistController::class, 'edit'])->name('admin.artists.edit');
     Route::delete('/artists/{id}', [ArtistController::class, 'destroy'])->name('admin.artists.destroy');
     Route::delete('/artists/create', [ArtistController::class, 'create'])->name('admin.artists.create');
-    Route::get('/artists/export/{format}', [ArtistController::class, 'export'])->name('admin.artists.export');
 
     Route::get('/export/users/csv', [ExportController::class, 'exportUsersToCSV'])->name('admin.export.users.csv');
     Route::get('/export/users/pdf', [ExportController::class, 'exportUsersToPDF'])->name('admin.export.users.pdf');
