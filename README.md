@@ -19,6 +19,8 @@ or:
 
 php artisan db:seed
 
+## Create a seeder
+php artisan make:seeder ArtistShowSeeder
 
 ## Clear App
 php artisan config:clear
@@ -28,3 +30,6 @@ php artisan view:clear
 
 # Clear Composer
 composer dump-autoload
+
+# Installer le project
+composer install or composer update

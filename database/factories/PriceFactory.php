@@ -14,7 +14,7 @@ class PriceFactory extends Factory
     {
         return [
             'type' => $this->faker->randomElement(['Standard', 'VIP', 'Student']),
-            'price' => $this->faker->randomFloat(2, 10, 150), // Price between 10 and 150
+            'price' => $this->faker->randomFloat(2, 10, 150), // prix entre 10 et 150
             'start_date' => $this->faker->dateTimeBetween('-1 month', 'now'),
             'end_date' => $this->faker->dateTimeBetween('now', '+1 year'),
             'show_id' => Show::factory(),
