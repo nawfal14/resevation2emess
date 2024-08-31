@@ -16,11 +16,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Dashboard route accessible only by authenticated users
-Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-
 // authenticated users 
 Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard-user', [DashboardController::class, 'dashboard'])->name('dashboard-user');
+
     // Profile routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

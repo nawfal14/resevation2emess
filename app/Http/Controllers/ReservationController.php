@@ -6,16 +6,24 @@ use App\Models\Reservation;
 use App\Models\Show;
 use App\Models\Price;
 use App\Models\User;
+
 use Illuminate\Http\Request;
 use Stripe\Stripe;
 use Stripe\Charge;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+
 
 class ReservationController extends Controller
 {
     public function index()
     {
-        $reservations = Reservation::with(['user', 'representation.show'])->paginate(8);
+        if (Auth::user()->is_admin) {
+            $reservations = Reservation::with(['user', 'representation.show'])->paginate(8);
+        } else {
+            $reservations = Reservation::where('user_id', Auth::id())->with(['user', 'representation.show'])->paginate(8);
+        }
+        // $reservations = Reservation::with(['user', 'representation.show'])->paginate(8);
         return view('reservations.index', compact('reservations'));
     }
 
@@ -29,7 +37,7 @@ class ReservationController extends Controller
     {
         $show = Show::with('representations')->findOrFail($show_id);
         $prices = Price::where('show_id', $show_id)->get();
-        $users = User::all();
+        $users = [User::where('id', Auth::id())->first()];
         return view('reservations.create', compact('show', 'users', 'prices'));
     }
 
