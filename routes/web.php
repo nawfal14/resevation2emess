@@ -1,27 +1,27 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RepresentationController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ShowController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
-// Public route to the welcome page
 Route::get('/', function () {
     return view('welcome');
 });
 
 // Dashboard route accessible only by authenticated users
-Route::get('/dashboard', [DashboardController::class, 'dashboard'])
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
-// Routes that require user authentication
-Route::middleware('auth')->group(function () {
+// authenticated users 
+Route::middleware(['auth', 'verified'])->group(function () {
     // Profile routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -50,8 +50,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
 });
 
-// Admin routes with additional middleware for admin access
-Route::middleware(['auth', 'admin'])->group(function () {
+// Admin routes 
+Route::middleware([AdminMiddleware::class])->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+
     Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
     Route::post('/users/create', [UserController::class, 'destroy'])->name('admin.users.create');
     Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('admin.users.destroy');
@@ -67,6 +69,16 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::delete('/artists/{id}', [ArtistController::class, 'destroy'])->name('admin.artists.destroy');
     Route::delete('/artists/create', [ArtistController::class, 'create'])->name('admin.artists.create');
     Route::get('/artists/export/{format}', [ArtistController::class, 'export'])->name('admin.artists.export');
+
+    Route::get('/export/users/csv', [ExportController::class, 'exportUsersToCSV'])->name('admin.export.users.csv');
+    Route::get('/export/users/pdf', [ExportController::class, 'exportUsersToPDF'])->name('admin.export.users.pdf');
+
+    Route::get('/export/shows/csv', [ExportController::class, 'exportShowsToCSV'])->name('admin.export.shows.csv');
+    Route::get('/export/shows/pdf', [ExportController::class, 'exportShowsToPDF'])->name('admin.export.shows.pdf');
+
+    Route::get('/export/artists/csv', [ExportController::class, 'exportArtistsToCSV'])->name('admin.export.artists.csv');
+    Route::get('/export/artists/pdf', [ExportController::class, 'exportArtistsToPDF'])->name('admin.export.artists.pdf');
 });
+
 
 require __DIR__ . '/auth.php';

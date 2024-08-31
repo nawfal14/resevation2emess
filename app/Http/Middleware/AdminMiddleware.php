@@ -14,6 +14,8 @@ class AdminMiddleware
             return $next($request);
         }
 
+        \Log::info('User not admin or not authenticated: Redirecting to home.');
+        
         return redirect('/');
     }
 }

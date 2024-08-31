@@ -19,3 +19,12 @@ or:
 
 php artisan db:seed
 
+
+## Clear App
+php artisan config:clear
+php artisan route:clear
+php artisan cache:clear
+php artisan view:clear
+
+# Clear Composer
+composer dump-autoload
