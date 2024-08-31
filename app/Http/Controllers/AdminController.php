@@ -24,6 +24,41 @@ class AdminController extends Controller
             'artists_count' => $artists->count(),
         ]);
     }
+    public function showCreateUserForm()
+    {
+        return view('admin.createUser');
+    }
+
+    public function addNewUser(Request $request)
+    {
+        $request->validate([
+            'firstname' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
+            'login' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+            'is_admin' => 'required|boolean',
+        ]);
+
+        User::create([
+            'firstname' => $request->input('firstname'),
+            'lastname' => $request->input('lastname'),
+            'login' => $request->input('login'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+            'is_admin' => $request->input('is_admin'),
+        ]);
+
+        return redirect()->route('dashboard')->with('success', 'User created successfully.');
+    }
+
+    public function deleteUser($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('dashboard')->with('success', 'User deleted successfully.');
+    }
 
     public function editUser($id)
     {

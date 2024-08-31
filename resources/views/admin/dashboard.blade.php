@@ -66,7 +66,7 @@
                                         <td class="border px-2 py-2 flex">
                                             <a href="{{ route('admin.users.edit', $user->id) }}"
                                                 class="text-blue-500 mr-2">Edit</a>
-                                            <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST">
+                                            <form action="{{ route('admin.users.delete', $user->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="text-red-500">Delete</button>

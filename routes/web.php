@@ -53,19 +53,24 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
+    // users
     Route::get('/admin/users/{id}/edit', [AdminController::class, 'editUser'])->name('admin.users.edit');
-    Route::post('/admin/users/create', [AdminController::class, 'createUser'])->name('admin.users.create');
     Route::patch('/admin/users/{id}', [AdminController::class, 'updateUser'])->name('admin.users.update');
-    Route::delete('/admin/users/{id}', [AdminController::class, 'destroyUser'])->name('admin.users.destroy');
+    Route::delete('/users/{id}/delete', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
+    Route::get('/admin/users/create', [AdminController::class, 'showCreateUserForm'])->name('admin.users.create');
+    Route::post('/admin/users/create', [AdminController::class, 'addNewUser'])->name('admin.users.store');
 
+    // shows
     Route::get('/shows/{id}/edit', [ShowController::class, 'edit'])->name('admin.shows.edit');
     Route::delete('/shows/{id}', [ShowController::class, 'destroy'])->name('admin.shows.destroy');
     Route::get('/shows/create', [ShowController::class, 'create'])->name('admin.shows.create');
 
+    // artists
     Route::get('/artists/{id}/edit', [ArtistController::class, 'edit'])->name('admin.artists.edit');
     Route::delete('/artists/{id}', [ArtistController::class, 'destroy'])->name('admin.artists.destroy');
     Route::delete('/artists/create', [ArtistController::class, 'create'])->name('admin.artists.create');
 
+    // exports
     Route::get('/export/users/csv', [ExportController::class, 'exportUsersToCSV'])->name('admin.export.users.csv');
     Route::get('/export/users/pdf', [ExportController::class, 'exportUsersToPDF'])->name('admin.export.users.pdf');
 
