@@ -64,6 +64,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/shows/{id}/edit', [ShowController::class, 'edit'])->name('admin.shows.edit');
     Route::delete('/shows/{id}', [ShowController::class, 'destroy'])->name('admin.shows.destroy');
     Route::get('/shows/create', [ShowController::class, 'create'])->name('admin.shows.create');
+    Route::patch('/shows/update/{id}', [ShowController::class, 'update'])->name('admin.shows.update');
 
     // artists
     Route::get('/artists/{id}/edit', [ArtistController::class, 'edit'])->name('admin.artists.edit');

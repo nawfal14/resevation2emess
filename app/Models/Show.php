@@ -20,7 +20,9 @@ class Show extends Model
         'duration',
         'created_in',
         'location_id',
-        'bookable'
+        'bookable',
+        'description',
+        'date',
     ];
 
     public function types()
